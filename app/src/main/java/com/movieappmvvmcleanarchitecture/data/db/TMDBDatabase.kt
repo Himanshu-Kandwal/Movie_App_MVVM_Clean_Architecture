@@ -14,7 +14,7 @@ import com.movieappmvvmcleanarchitecture.data.model.tvshow.TvShow
 abstract class TMDBDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
-    abstract fun tvDao(): TvShowDao
+    abstract fun tvshowDao(): TvShowDao
     abstract fun artistDao(): ArtistDao
 
 

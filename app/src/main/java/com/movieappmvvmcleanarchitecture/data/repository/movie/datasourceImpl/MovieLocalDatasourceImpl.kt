@@ -6,7 +6,7 @@ import com.movieappmvvmcleanarchitecture.data.repository.movie.datasource.MovieL
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MovieLocalDataSourceImpl(private val movieDao: MovieDao) : MovieLocalDatasource {
+class MovieLocalDatasourceImpl(private val movieDao: MovieDao) : MovieLocalDatasource {
     override suspend fun getMoviesFromDb(): List<Movie> {
         return movieDao.getMovies()
     }

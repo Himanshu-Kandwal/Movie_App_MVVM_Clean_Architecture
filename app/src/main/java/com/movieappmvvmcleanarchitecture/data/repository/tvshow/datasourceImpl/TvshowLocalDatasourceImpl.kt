@@ -1,15 +1,12 @@
 package com.movieappmvvmcleanarchitecture.data.repository.tvshow.datasourceImpl
 
-import com.movieappmvvmcleanarchitecture.data.db.MovieDao
 import com.movieappmvvmcleanarchitecture.data.db.TvShowDao
-import com.movieappmvvmcleanarchitecture.data.model.movie.Movie
 import com.movieappmvvmcleanarchitecture.data.model.tvshow.TvShow
-import com.movieappmvvmcleanarchitecture.data.repository.movie.datasource.MovieLocalDatasource
 import com.movieappmvvmcleanarchitecture.data.repository.tvshow.datasource.TvshowLocalDatasource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class TvshowLocalDataSourceImpl(private val tvShowDao: TvShowDao) : TvshowLocalDatasource {
+class TvshowLocalDatasourceImpl(private val tvShowDao: TvShowDao) : TvshowLocalDatasource {
 
     override suspend fun getTvshowFromDb(): List<TvShow> {
         return tvShowDao.getTvShows()

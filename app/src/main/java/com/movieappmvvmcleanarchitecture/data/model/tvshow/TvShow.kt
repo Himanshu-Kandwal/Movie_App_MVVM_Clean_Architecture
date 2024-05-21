@@ -7,18 +7,15 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "popular_tvshows")
 data class TvShow(
+    @SerializedName("first_air_date")
+    val firstAirDate: String,
     @PrimaryKey
     @SerializedName("id")
-    val id: Int?,
-    @SerializedName("first_air_date")
-    val firstAirDate: String?,
-    @SerializedName("genre_ids")
-    val genreIds: List<Int>?,
+    val id: Int,
     @SerializedName("name")
-    val name: String?,
+    val name: String,
     @SerializedName("overview")
-    val overview: String?,
+    val overview: String,
     @SerializedName("poster_path")
-    val posterPath: String?,
-
-    )
+    val posterPath: String
+)
