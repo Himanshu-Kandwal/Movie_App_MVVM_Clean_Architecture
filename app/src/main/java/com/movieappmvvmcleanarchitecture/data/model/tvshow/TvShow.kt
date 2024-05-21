@@ -1,4 +1,4 @@
-package com.movieappmvvmcleanarchitecture.data
+package com.movieappmvvmcleanarchitecture.data.model.tvshow
 
 
 import com.google.gson.annotations.SerializedName

@@ -1,8 +1,8 @@
 package com.movieappmvvmcleanarchitecture.data.api
 
-import com.movieappmvvmcleanarchitecture.data.ArtistList
-import com.movieappmvvmcleanarchitecture.data.MovieList
-import com.movieappmvvmcleanarchitecture.data.TvShowList
+import com.movieappmvvmcleanarchitecture.data.model.artist.ArtistList
+import com.movieappmvvmcleanarchitecture.data.model.movie.MovieList
+import com.movieappmvvmcleanarchitecture.data.model.tvshow.TvShowList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
