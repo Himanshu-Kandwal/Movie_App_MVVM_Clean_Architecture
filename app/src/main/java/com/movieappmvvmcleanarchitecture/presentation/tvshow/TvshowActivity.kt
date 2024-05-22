@@ -57,10 +57,10 @@ class TvshowActivity : AppCompatActivity() {
         binding.tvshowRecyclerView.layoutManager = LinearLayoutManager(this)
         tvshowAdapter = TvshowAdapter()
         binding.tvshowRecyclerView.adapter = tvshowAdapter
-        displayPopularMovies()
+        displayPopularTvshow()
     }
 
-    private fun displayPopularMovies() {
+    private fun displayPopularTvshow() {
         val tvshowLiveData = tvshowViewModel.getTvShows()
         tvshowLiveData.observe(this) {
             Log.d("MyTag", "list: $it")
@@ -85,7 +85,7 @@ class TvshowActivity : AppCompatActivity() {
 
         return when (item.itemId) {
             R.id.action_update -> {
-                updateMovies()
+                updateTvshow()
                 true
             }
 
@@ -94,7 +94,7 @@ class TvshowActivity : AppCompatActivity() {
 
     }
 
-    private fun updateMovies() {
+    private fun updateTvshow() {
         Toast.makeText(applicationContext, "Trying To Update Tvshow", Toast.LENGTH_LONG)
             .show()
         binding.tvShowProgressbar.visibility = View.VISIBLE
