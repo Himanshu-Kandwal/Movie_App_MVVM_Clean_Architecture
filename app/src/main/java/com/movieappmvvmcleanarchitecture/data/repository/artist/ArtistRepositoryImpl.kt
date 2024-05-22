@@ -44,7 +44,7 @@ class ArtistRepositoryImpl(
     }
 
     suspend fun getArtistsFromApi(): List<Artist> {
-        lateinit var artistList: List<Artist>
+        var artistList: List<Artist> = ArrayList()
         try {
             val response = artistRemoteDatasource.getArtistFromApi()
             val body = response.body()
