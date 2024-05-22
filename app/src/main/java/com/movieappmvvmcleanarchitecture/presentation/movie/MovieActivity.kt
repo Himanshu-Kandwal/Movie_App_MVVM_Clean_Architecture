@@ -2,12 +2,15 @@ package com.movieappmvvmcleanarchitecture.presentation.movie
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.movieappmvvmcleanarchitecture.R
@@ -69,4 +72,40 @@ class MovieActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.update_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.action_update -> {
+                updateMovies()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+
+    }
+
+    private fun updateMovies() {
+        Toast.makeText(applicationContext, "Trying To Update movie", Toast.LENGTH_LONG)
+            .show()
+        binding.movieProgressBar.visibility = View.VISIBLE
+        val updatedMovieResponse = movieViewModel.updateMovies()
+        updatedMovieResponse.observe(this) {
+            if (it != null) {
+                movieAdapter.setList(it)
+                movieAdapter.notifyDataSetChanged()
+                binding.movieProgressBar.visibility = View.GONE
+            } else {
+                binding.movieProgressBar.visibility = View.GONE
+                Toast.makeText(applicationContext, "No Data Available to update", Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
+    }
 }

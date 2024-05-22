@@ -13,12 +13,12 @@ class MovieRepositoryImpl(
     private val movieCacheDatasource: MovieCacheDatasource
 ) : MovieRepository {
 
-    override suspend fun getMovies(): List<Movie>? {
+    override suspend fun getMovies(): List<Movie> {
         return getMoviesFromCache()
 
     }
 
-    override suspend fun updateMovies(): List<Movie>? {
+    override suspend fun updateMovies(): List<Movie> {
         val newListOfMovies = getMoviesFromApi()
         movieLocalDataSource.clearAll()
 
@@ -36,6 +36,10 @@ class MovieRepositoryImpl(
             val body = response.body()
             if (body != null) {
                 movieList = body.movies
+                Log.i(
+                    "MyTag",
+                    "fetched movies from Api: ${System.currentTimeMillis()} $movieList"
+                )
             }
 
         } catch (exception: Exception) {
@@ -50,8 +54,13 @@ class MovieRepositoryImpl(
 
         try {
             movieList = movieLocalDataSource.getMoviesFromDb()
-            if (movieList.isNotEmpty()) return movieList
-            else {
+            if (movieList.isNotEmpty()) {
+                Log.i(
+                    "MyTag",
+                    "fetched movies from DB: ${System.currentTimeMillis()} $movieList"
+                )
+                return movieList
+            } else {
                 movieList = getMoviesFromApi()
                 movieLocalDataSource.saveMoviesToDb(movieList)
             }
@@ -67,8 +76,13 @@ class MovieRepositoryImpl(
 
         try {
             movieList = movieCacheDatasource.getMoviesFromCache()
-            if (movieList.isNotEmpty()) return movieList
-            else {
+            if (movieList.isNotEmpty()) {
+                Log.i(
+                    "MyTag",
+                    "fetched movies from Cache: ${System.currentTimeMillis()} $movieList"
+                )
+                return movieList
+            } else {
                 movieList = getMoviesFromDb()
                 movieCacheDatasource.saveMoviesToCache(movieList)
             }
