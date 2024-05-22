@@ -1,5 +1,6 @@
 package com.movieappmvvmcleanarchitecture.presentation.artist
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.movieappmvvmcleanarchitecture.domain.usecase.GetArtistsUseCase
 import com.movieappmvvmcleanarchitecture.domain.usecase.UpdateArtistsUseCase
@@ -7,7 +8,7 @@ import com.movieappmvvmcleanarchitecture.domain.usecase.UpdateArtistsUseCase
 class ArtistViewmodel(
     private val getArtistsUseCase: GetArtistsUseCase,
     private val updateArtistsUseCase: UpdateArtistsUseCase
-) {
+) : ViewModel() {
 
     fun getArtists() = liveData {
         val artists = getArtistsUseCase.execute()
