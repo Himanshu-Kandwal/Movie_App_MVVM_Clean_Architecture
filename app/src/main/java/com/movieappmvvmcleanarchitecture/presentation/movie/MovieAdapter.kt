@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.movieappmvvmcleanarchitecture.R
 import com.movieappmvvmcleanarchitecture.data.model.movie.Movie
 import com.movieappmvvmcleanarchitecture.databinding.ListItemBinding
@@ -35,8 +36,11 @@ class MovieViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(bi
         binding.titleTextView.text = movie.title
         binding.descriptionTextView.text = movie.overview
         val posterURL = "https://image.tmdb.org/t/p/w500" + movie.posterPath
-        Glide.with(binding.root.context).load(posterURL)
-            .placeholder(R.drawable.placeholder_movieimages).into(binding.imageView)
+        Glide.with(binding.root.context)
+            .load(posterURL)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .placeholder(R.drawable.placeholder_movieimages)
+            .into(binding.imageView)
     }
 
 }
