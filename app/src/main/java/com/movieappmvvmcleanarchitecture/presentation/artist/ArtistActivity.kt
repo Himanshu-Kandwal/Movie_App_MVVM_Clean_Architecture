@@ -11,15 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.movieappmvvmcleanarchitecture.R
 import com.movieappmvvmcleanarchitecture.databinding.ActivityArtistBinding
-import com.movieappmvvmcleanarchitecture.databinding.ActivityMovieBinding
 import com.movieappmvvmcleanarchitecture.presentation.di.Injector
-import com.movieappmvvmcleanarchitecture.presentation.movie.MovieAdapter
-import com.movieappmvvmcleanarchitecture.presentation.movie.MovieViewModel
-import com.movieappmvvmcleanarchitecture.presentation.movie.MovieViewModelFactory
 import javax.inject.Inject
 
 class ArtistActivity : AppCompatActivity() {
@@ -59,10 +54,10 @@ class ArtistActivity : AppCompatActivity() {
         binding.artistRecyclerView.layoutManager = LinearLayoutManager(this)
         artistAdapter = ArtistAdapter()
         binding.artistRecyclerView.adapter = artistAdapter
-        displayPopularMovies()
+        displayPopularArtist()
     }
 
-    private fun displayPopularMovies() {
+    private fun displayPopularArtist() {
         val artistsLiveData = artistViewmodel.getArtists()
         artistsLiveData.observe(this) {
             Log.d("MyTag", "list: $it")
