@@ -14,6 +14,7 @@
         tools:context=".presentation.artist.ArtistActivity">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingTop="?attr/actionBarSize"
             android:id="@+id/artist_recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
