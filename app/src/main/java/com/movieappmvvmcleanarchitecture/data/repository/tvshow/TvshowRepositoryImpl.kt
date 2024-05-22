@@ -16,7 +16,7 @@ class TvshowRepositoryImpl(
 
 
     suspend fun getTvShowsFromApi(): List<TvShow> {
-        lateinit var tvShowsList: List<TvShow>
+        var tvShowsList: List<TvShow> = ArrayList()
 
         try {
             val response = tvshowsRemoteDataSource.getTvshow()
