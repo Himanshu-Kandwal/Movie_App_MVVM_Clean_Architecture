@@ -13,9 +13,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
-        tools:context=".presentation.HomeActivity">
+        >
 
         <Button
+            android:layout_marginTop="?attr/actionBarSize"
             android:id="@+id/movieButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,4 +47,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
+
 </layout>
